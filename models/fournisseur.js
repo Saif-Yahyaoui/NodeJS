@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
+import user from './user.js'; 
+
 const { Schema, model } = mongoose;
 
 const fournisseurSchema = new Schema(
     {
-        type: {
+        role: {
             type: String,
             required: true
         },
@@ -15,10 +17,12 @@ const fournisseurSchema = new Schema(
             type: String,
             required: true
         },
+      
     },
     {
         timestamps: true
     }
 );
 
-export default model('Fournisseur', fournisseurSchema);
+const Fournisseur = user.discriminator('Fournisseur', fournisseurSchema);
+export default  Fournisseur;

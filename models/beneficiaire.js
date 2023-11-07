@@ -1,16 +1,19 @@
 import mongoose from 'mongoose';
+import user from './user.js'; 
+
 const { Schema, model } = mongoose;
 
 const beneficiaireSchema = new Schema(
     {
-        type: {
+        role: {
             type: String,
             required: true
         },
+       
     },
     {
         timestamps: true
     }
 );
-
-export default model('Beneficiare', beneficiaireSchema);
+const Beneficiare = user.discriminator('Beneficiare', beneficiaireSchema);
+export default  Beneficiare;
