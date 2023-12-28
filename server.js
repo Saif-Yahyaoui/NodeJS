@@ -12,6 +12,7 @@ import reclamationRoutes from './routes/reclamationRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
+import blogRoutes from './routes/blogRoutes.js'; // Import the blogRoutes
 
 const app = express();
 const port = process.env.PORT || 5005;
@@ -22,13 +23,13 @@ mongoose.set('debug', true);
 mongoose.Promise = global.Promise;
 
 mongoose
-  .connect(`${dbUrl}/${databaseName}`, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log(`Connected to MongoDB: ${databaseName}`);
-  })
-  .catch((err) => {
-    console.error('MongoDB connection error:', err);
-  });
+    .connect(`${dbUrl}/${databaseName}`, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log(`Connected to MongoDB: ${databaseName}`);
+    })
+    .catch((err) => {
+        console.error('MongoDB connection error:', err);
+    });
 
 app.use(cors());
 app.use(morgan('dev'));
@@ -45,10 +46,12 @@ app.use('/reclamation', reclamationRoutes);
 app.use('/user', userRoutes);
 app.use('/restaurant', restaurantRoutes);
 app.use('/order', orderRoutes);
+app.use('/blog', blogRoutes); // Add the blog routes to the application
+
 // Error handling middleware
 app.use(notFoundError);
 app.use(errorHandler);
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
+    console.log(`Server running at http://localhost:${port}/`);
 });
