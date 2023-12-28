@@ -22,8 +22,7 @@ const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017';
 mongoose.set('debug', true);
 mongoose.Promise = global.Promise;
 
-mongoose
-    .connect(`${dbUrl}/${databaseName}`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`${dbUrl}/${databaseName}`, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log(`Connected to MongoDB: ${databaseName}`);
     })
