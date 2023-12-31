@@ -14,6 +14,11 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -33,7 +38,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Xm2GubOwOsVtUPsxpGUziwSWuv" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -51,6 +56,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "integration",
     "last_opened_file_path": "C:/Users/Saif/Downloads/PDM-NodeJS-main",
     "settings.editor.selected.configurable": "preferences.updates",
     "show.migrate.to.gradle.popup": "false"
