@@ -6,7 +6,7 @@ const { Schema } = mongoose;
 // Schéma spécifique pour les restaurants étendu à partir du modèle utilisateur de base
 const restaurantSchema = new Schema(
   {
-    category: {
+    category: { 
       type: String,
       enum: ['Healthy', 'Fast Food', 'Gluten Free'],
       required: true,
@@ -19,12 +19,12 @@ const restaurantSchema = new Schema(
           type: String,
           required: true,
         },
-    // orders: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Order',
-    //   },
-    // ],
+    orders: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Order',
+      },
+    ],
     // Ajoutez d'autres propriétés spécifiques au restaurant ici
   },
   { timestamps: true }

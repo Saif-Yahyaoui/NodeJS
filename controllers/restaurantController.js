@@ -1,5 +1,6 @@
 import { validationResult } from 'express-validator';
 import Restaurant from '../models/restaurant.js';
+import Order from '../models/order.js';
 
 export function getAllRestaurants(req, res) {
   Restaurant.find({})
@@ -43,13 +44,13 @@ export function updateRestaurant(req, res) {
     return res.status(400).json({ errors: validationResult(req).array() });
   }
 
-  const { category, image, description/*, orders */} = req.body;
+  const { category, image, description, orders } = req.body;
 
   const updatedRestaurant = {
     category,
     image,
     description,
-    //orders,
+    orders,
     // Ajoutez d'autres champs spécifiques au restaurant ici
   };
 
@@ -75,5 +76,32 @@ export function deleteRestaurant(req, res) {
     })
     .catch((err) => {
       res.status(500).json({ error: err });
+    });
+}
+
+
+export function getOrdersByRestaurantId(req, res) {
+  const restaurantId = req.params.id;
+
+  Restaurant.findById(restaurantId)
+    .populate({
+      path: 'orders',
+      populate: {
+        path: 'items.product',
+        model: 'Product', // Adjust the model name based on your Product model
+        select: 'title', // Include only the 'title' field
+      },
+    })
+    .exec((err, restaurant) => {
+      if (err) {
+        return res.status(500).json({ error: err });
+      }
+
+      if (!restaurant) {
+        return res.status(404).json({ message: 'Restaurant not found' });
+      }
+
+      const orders = restaurant.orders;
+      res.status(200).json(orders);
     });
 }

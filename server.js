@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { response } from 'express';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
 import cors from 'cors';
@@ -13,9 +13,12 @@ import userRoutes from './routes/userRoutes.js';
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
+import paymentRoutes from './routes/paymentRoutes.js';
+import responseRoutes from './routes/responseRoutes.js';
+import emailRoutes from './routes/emailRoutes.js';
 
 const app = express();
-const port = process.env.PORT || 7001;
+const port = process.env.PORT || 7002;
 const databaseName = 'pdm';
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017';
 
@@ -47,6 +50,9 @@ app.use('/user', userRoutes);
 app.use('/restaurant', restaurantRoutes);
 app.use('/order', orderRoutes);
 app.use('/blog', blogRoutes);
+app.use('/payments', paymentRoutes);
+app.use('/', responseRoutes);
+app.use('/email', emailRoutes);
 // Error handling middleware
 app.use(notFoundError);
 app.use(errorHandler);
