@@ -12,7 +12,9 @@ import reclamationRoutes from './routes/reclamationRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
-import blogRoutes from './routes/blogRoutes.js'; // Import the blogRoutes
+import blogRoutes from './routes/blogRoutes.js'; // Original blog routes
+import blowgsRoutes from './routes/blowgsRoutes.js'; // New blowgs routes
+import articleRoutes from './routes/articleRoutes.js'; // New article routes
 
 const app = express();
 const port = process.env.PORT || 5005;
@@ -45,7 +47,9 @@ app.use('/reclamation', reclamationRoutes);
 app.use('/user', userRoutes);
 app.use('/restaurant', restaurantRoutes);
 app.use('/order', orderRoutes);
-app.use('/blog', blogRoutes); // Add the blog routes to the application
+app.use('/blog', blogRoutes);
+app.use('/blowgs', blowgsRoutes);
+app.use('/article', articleRoutes); // Add new article routes
 
 // Error handling middleware
 app.use(notFoundError);
