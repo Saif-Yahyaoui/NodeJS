@@ -20,7 +20,8 @@ export async function addArticle(req, res) {
         const newArticle = await Article.create(req.body);
         res.status(201).json(newArticle);
     } catch (err) {
-        res.status(500).json({ error: err });
+        console.error('Error adding article:', err);
+        res.status(500).json({ error: 'Internal Server Error', details: err.message });
     }
 }
 
